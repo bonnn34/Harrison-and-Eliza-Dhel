@@ -1,0 +1,12 @@
+# H and E reference-style gold seal
+
+Final: he-reference-gold-seal-3000.png. Transparent PNG, 3000 × 3000 pixels. Created using the built-in imagegen tool with the original gold seal as the primary reference and the H and E monogram as the lettering reference, followed by PNG resizing. Website references were not changed.
+
+## Final prompt
+
+Use case: precise-object-edit.
+Image 1 is the PRIMARY edit target: the user's original shiny golden illustrated wedding seal. Image 2 is the H and E monogram that must replace the original lettering.
+Edit image 1 directly. Keep its exact overall design language: rounded irregular scalloped silhouette, plump rolled outside edge, fine DOUBLE circular rings, smooth flat central disk and polished stylized illustrated gold highlights. Preserve its front-facing composition, outline, rim thickness and proportions as closely as possible. It should look like the SAME seal illustration with new lettering, not a new photographic wax seal and not a flat colored badge.
+Completely replace the existing central lettering from image 1 with the elegant H and E monogram from image 2: recognizable serif H upper left overlapping serif E lower right, graceful fine sweeping flourishes and two tiny leaf sprigs, correctly fitted inside the inner circle. Render these strokes in the same clean, lightly beveled gold illustration style as the reference letters. Preserve the exact H and E forms and readability; do not retain the original M or any other letters from the seal. No ampersand or additional text.
+Make the gold softer and a little less yellow to complement a pale lavender envelope: warm champagne gold, buttery pale gold central disk, slightly deeper gold grooves and bright restrained cream-gold edge highlights. Keep the reference's smooth drawn highlights and clean defined edges. This is a polished digital seal illustration, NOT a photo: no realistic wax grain, paper texture, pores, glitter, grunge, photographic studio lighting or gritty surface. Do not flatten the reference's drawn dimensional contours away. Balanced luxurious romantic wedding stationery style.
+Output ONE whole centered isolated seal with fully transparent background outside its outer silhouette. Keep entire wax silhouette in view with a small clear transparent margin. Opaque solid seal body and central disk. No card, envelope, props, shadows outside the seal, watermark or background pattern. High resolution square PNG.

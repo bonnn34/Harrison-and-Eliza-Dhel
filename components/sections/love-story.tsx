@@ -84,18 +84,22 @@ function LoveStoryTitle({
       >
         <StoryGlyphText text={title} />
       </span>
-      <span
-        aria-hidden
-        className={`${aboveTheBeyond.className} mx-auto mt-2 block w-fit max-w-full px-1 leading-[0.88] sm:mt-2.5 sm:leading-[0.9] md:mt-3`}
-        style={{
-          fontSize: "var(--script-size)",
-          color: "var(--color-welcome-heading)",
-          textShadow: onBgGlow,
-        }}
-      >
-        <StoryGlyphText text={subtitle} />
-      </span>
-      <span className="sr-only">{subtitle}</span>
+      {subtitle ? (
+        <>
+          <span
+            aria-hidden
+            className={`${aboveTheBeyond.className} mx-auto mt-2 block w-fit max-w-full px-1 leading-[0.88] sm:mt-2.5 sm:leading-[0.9] md:mt-3`}
+            style={{
+              fontSize: "var(--script-size)",
+              color: "var(--color-welcome-heading)",
+              textShadow: onBgGlow,
+            }}
+          >
+            <StoryGlyphText text={subtitle} />
+          </span>
+          <span className="sr-only">{subtitle}</span>
+        </>
+      ) : null}
     </h1>
   )
 }
@@ -147,6 +151,9 @@ export function LoveStory({ skyBackdrop = true }: { skyBackdrop?: boolean } = {}
   const corners = loveStory.decos ?? defaultSiteConfig.loveStory.decos
   const showFrame = loveStory.showFrame ?? defaultSiteConfig.loveStory.showFrame
   const intro = loveStory.intro ?? defaultSiteConfig.loveStory.intro
+  const openingQuote = loveStory.openingQuote ?? defaultSiteConfig.loveStory.openingQuote
+  const openingCitation = loveStory.openingCitation ?? defaultSiteConfig.loveStory.openingCitation
+  const chaptersHeading = loveStory.chaptersHeading ?? defaultSiteConfig.loveStory.chaptersHeading
   const headerOrnament = loveStory.headerOrnament ?? defaultSiteConfig.loveStory.headerOrnament
   const photoAlt = loveStory.photoAlt ?? defaultSiteConfig.loveStory.photoAlt
   const showChapterNumbers = loveStory.showChapterNumbers ?? defaultSiteConfig.loveStory.showChapterNumbers
@@ -225,10 +232,28 @@ export function LoveStory({ skyBackdrop = true }: { skyBackdrop?: boolean } = {}
           <div className="mt-4 sm:mt-5">
             <OrnamentalDivider />
           </div>
+          {openingQuote ? (
+            <blockquote className="love-story-intro mx-auto mt-5 max-w-xl px-4 sm:mt-6">
+              <p><StoryGlyphText text={openingQuote} /></p>
+              {openingCitation ? (
+                <cite className="mt-1 block text-sm not-italic sm:text-base">
+                  <StoryGlyphText text={openingCitation} />
+                </cite>
+              ) : null}
+            </blockquote>
+          ) : null}
           {intro ? (
-            <p className="love-story-intro mx-auto mt-5 max-w-xl sm:mt-6">
+            <p className="love-story-intro mx-auto mt-5 max-w-xl px-4 sm:mt-6">
               <StoryGlyphText text={intro} />
             </p>
+          ) : null}
+          {chaptersHeading ? (
+            <h2
+              className={`${theSeasons.className} mx-auto mt-8 max-w-xl px-4 text-xl leading-tight sm:mt-10 sm:text-2xl md:text-3xl`}
+              style={{ color: "var(--color-welcome-navy)", textShadow: onBgGlow }}
+            >
+              <StoryGlyphText text={chaptersHeading} />
+            </h2>
           ) : null}
         </motion.div>
       </header>

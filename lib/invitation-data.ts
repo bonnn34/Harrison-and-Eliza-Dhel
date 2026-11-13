@@ -43,7 +43,7 @@ function readStored(url: string): unknown[] | null {
     const raw = window.localStorage.getItem(STORAGE_PREFIX + url)
     if (!raw) return null
     const data: unknown = JSON.parse(raw)
-    return Array.isArray(data) && data.length > 0 ? data : null
+    return Array.isArray(data) ? data : null
   } catch {
     return null
   }
@@ -63,7 +63,7 @@ function writeStored(url: string, data: unknown[]) {
  */
 export function readCachedInvitationList<T>(url: string): T[] | null {
   const cached = jsonCache.get(url)
-  if (cached && cached.data.length > 0) return cached.data as T[]
+  if (cached) return cached.data as T[]
   if (typeof window === "undefined") return null
   const stored = readStored(url)
   if (stored) jsonCache.set(url, { data: stored, at: 0 })
@@ -81,10 +81,8 @@ async function requestList(url: string): Promise<unknown[]> {
       })
       const data: unknown = await response.json().catch(() => null)
       if (response.ok && Array.isArray(data)) {
-        if (data.length > 0) {
-          jsonCache.set(url, { data, at: Date.now() })
-          writeStored(url, data)
-        }
+        jsonCache.set(url, { data, at: Date.now() })
+        writeStored(url, data)
         return data
       }
       lastError = new Error(`API list is not ready (${response.status})`)
@@ -122,17 +120,17 @@ function withCallerSignal<T>(promise: Promise<T>, signal?: AbortSignal): Promise
 
 /**
  * Fetch a list endpoint with timeout + bounded retries. Concurrent callers share
- * one request. If the network fails, falls back to the last known good copy.
+ * one request. If the network fails, optionally falls back to the last known copy.
  */
 export async function fetchInvitationList<T>(
   url: string,
-  options?: { signal?: AbortSignal; reload?: boolean },
+  options?: { signal?: AbortSignal; reload?: boolean; allowStale?: boolean },
 ): Promise<T[]> {
   if (options?.signal?.aborted) throw abortError()
 
   if (!options?.reload) {
     const cached = jsonCache.get(url)
-    if (cached && Date.now() - cached.at < CLIENT_TTL_MS && cached.data.length > 0) {
+    if (cached && Date.now() - cached.at < CLIENT_TTL_MS) {
       return cached.data as T[]
     }
   }
@@ -148,7 +146,7 @@ export async function fetchInvitationList<T>(
   try {
     return (await withCallerSignal(request, options?.signal)) as T[]
   } catch (error) {
-    if (options?.signal?.aborted) throw error
+    if (options?.signal?.aborted || options?.allowStale === false) throw error
     const fallback = readCachedInvitationList<T>(url)
     if (fallback) return fallback
     throw error

@@ -1,0 +1,9 @@
+allowBuilds:
+  builds: true
+permissions:
+  builds:
+    skills: true
+  esbuild:
+    build: true
+  sharp:
+    build: true

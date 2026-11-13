@@ -18,10 +18,6 @@ export const SHEETS_CACHE_KEYS = {
 
 const DEFAULT_TTL_MS = 25_000
 
-function isUsefulList(value: unknown) {
-  return Array.isArray(value) && value.length > 0
-}
-
 export async function withSheetsCache<T>(
   key: string,
   loader: () => Promise<T>,
@@ -41,10 +37,10 @@ export async function withSheetsCache<T>(
 
   const inflight = loader()
     .then((value) => {
-      if (isUsefulList(value)) {
+      if (Array.isArray(value)) {
         store.set(key, { value, expiresAt: Date.now() + ttlMs })
       } else if (existing?.value !== undefined) {
-        // Keep the last good list rather than flashing an empty one
+        // Only preserve the last list for an unexpected payload; [] is valid.
         store.set(key, { value: existing.value, expiresAt: 0 })
       } else {
         store.delete(key)

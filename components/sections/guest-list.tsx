@@ -27,8 +27,8 @@ import { cinzel } from "@/lib/fonts"
 import localFont from "next/font/local"
 import { useSiteConfig } from "@/hooks/use-site-config"
 import { modalTitleSize, sectionType, welcomeTitleSize } from "@/lib/section-typography"
-import { fetchUntilReady, isAbortError } from "@/lib/fetch-until-ready"
-import { fetchInvitationList, invalidateInvitationData, readCachedInvitationList } from "@/lib/invitation-data"
+import { isAbortError } from "@/lib/fetch-until-ready"
+import { fetchInvitationList, invalidateInvitationData } from "@/lib/invitation-data"
 import { TintedDeco } from "@/components/tinted-deco"
 
 const theSeasons = localFont({
@@ -191,7 +191,7 @@ function mapApiGuests(data: ApiGuest[]): Guest[] {
 }
 
 async function loadGuestsFromApi(url: string, signal?: AbortSignal, reload = false): Promise<Guest[]> {
-  const data = await fetchInvitationList<ApiGuest>(url, { signal, reload })
+  const data = await fetchInvitationList<ApiGuest>(url, { signal, reload, allowStale: false })
   return mapApiGuests(data)
 }
 
@@ -297,33 +297,23 @@ export function GuestList() {
     }
   }, [selectedGuest, formData.RSVP])
 
-  // Load guests: show the last known list instantly, then refresh with bounded retries
+  // Verify the current guest list before showing RSVP names, including an empty list.
   const loadGuests = async ({ reload = false } = {}) => {
     guestsLoadRef.current?.abort()
     const controller = new AbortController()
     guestsLoadRef.current = controller
 
-    const cached = readCachedInvitationList<ApiGuest>(guestsApi)
-    const cachedGuests = cached ? mapApiGuests(cached) : []
-    if (cachedGuests.length > 0) {
-      setGuests(cachedGuests)
-    }
-    setIsFetchingGuests(cachedGuests.length === 0)
+    setIsFetchingGuests(true)
     setGuestsLoadFailed(false)
 
     try {
-      const mappedGuests = await fetchUntilReady({
-        signal: controller.signal,
-        load: (signal) => loadGuestsFromApi(guestsApi, signal, reload),
-        isReady: (list) => list.length > 0,
-        maxAttempts: 4,
-        maxDelayMs: 3000,
-      })
+      const mappedGuests = await loadGuestsFromApi(guestsApi, controller.signal, reload)
       setGuests(mappedGuests)
     } catch (error) {
       if (isAbortError(error)) return
       console.error("Error fetching guests:", error)
-      if (cachedGuests.length === 0) setGuestsLoadFailed(true)
+      setGuests([])
+      setGuestsLoadFailed(true)
     } finally {
       if (guestsLoadRef.current === controller) {
         guestsLoadRef.current = null
@@ -395,9 +385,7 @@ export function GuestList() {
     try {
       invalidateInvitationData(guestsApi)
       const mappedGuests = await loadGuestsFromApi(guestsApi, undefined, true)
-      if (mappedGuests.length > 0) {
-        setGuests(mappedGuests)
-      }
+      setGuests(mappedGuests)
     } catch (error) {
       console.error("Error fetching guests:", error)
     }

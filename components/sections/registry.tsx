@@ -2,8 +2,7 @@
 
 import { RisingHearts } from "@/components/rising-hearts"
 import { useState, type CSSProperties, type KeyboardEvent } from "react"
-import { QRCodeSVG } from "qrcode.react"
-import { useQrColors } from "@/hooks/use-css-color"
+import Image from "next/image"
 import localFont from "next/font/local"
 import { cinzel } from "@/lib/fonts"
 import { Gift, Heart, Copy, Check } from "lucide-react"
@@ -98,7 +97,7 @@ function RegistryTitle({ title, subtitle }: { title: string; subtitle: string })
   )
 }
 
-type GiftAccount = { provider: string; name: string; number: string }
+type GiftAccount = { provider: string; name: string; number: string; qrImage?: string }
 
 // "09309324933" → "0930 932 4933"; other numbers in groups of four
 function formatAccountNumber(number: string) {
@@ -125,7 +124,6 @@ function AccountTabs({
   colors: RegistryColors
   buttonBg: string
 }) {
-  const { fg: qrFg, bg: qrBg } = useQrColors()
   const reduceMotion = useReducedMotion()
   const [active, setActive] = useState(0)
   const [copied, setCopied] = useState(false)
@@ -225,21 +223,21 @@ function AccountTabs({
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.97 }}
             transition={{ duration: 0.3, ease }}
           >
-            <div
-              className="rounded-2xl p-2.5 sm:p-3"
-              style={{ backgroundColor: qrBg, boxShadow: `0 0 0 1px ${colors.cardEdge}, 0 14px 28px -16px color-mix(in srgb, var(--color-welcome-navy) 50%, transparent)` }}
-            >
-              <QRCodeSVG
-                value={number}
-                size={220}
-                level="M"
-                includeMargin={false}
-                fgColor={qrFg}
-                bgColor={qrBg}
-                className="block h-40 w-40 sm:h-44 sm:w-44"
-                aria-label={`QR code for ${account.provider} ${number}`}
-              />
-            </div>
+            {account.qrImage ? (
+              <div
+                className="w-full max-w-[244px] rounded-2xl p-2.5 sm:p-3"
+                style={{ backgroundColor: "#FFFFFF", boxShadow: `0 0 0 1px ${colors.cardEdge}, 0 14px 28px -16px color-mix(in srgb, var(--color-welcome-navy) 50%, transparent)` }}
+              >
+                <Image
+                  src={account.qrImage}
+                  alt={`${account.provider} payment QR code${account.name ? ` for ${account.name}` : ""}`}
+                  width={440}
+                  height={440}
+                  unoptimized
+                  className="block h-auto w-full"
+                />
+              </div>
+            ) : null}
             <span
               className={`${cinzel.className} mt-4 rounded-full px-3 py-0.5 text-[0.58rem] font-semibold uppercase tracking-[0.2em] sm:text-[0.64rem]`}
               style={{ background: "#FFFFFF", color: colors.eyebrow, border: `1px solid ${colors.cardEdge}` }}

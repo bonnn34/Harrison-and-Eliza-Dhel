@@ -323,15 +323,16 @@ type AttireHalf = {
   label: string
   details: string
   highlight?: string
+  palette?: readonly AttireColor[]
   roles: readonly { role: string; attire: string }[]
 }
 
 // Small round swatches with their names underneath — compact palette for one group
-function PaletteDots({ palette }: { palette: readonly PaletteColor[] }) {
+function PaletteDots({ palette, label = "Color palette" }: { palette: readonly PaletteColor[]; label?: string }) {
   return (
     <ul
       className="flex flex-wrap items-start justify-center gap-x-2.5 gap-y-2 sm:gap-x-4"
-      aria-label={`Color palette: ${palette.map((c) => c.name || c.hex).join(", ")}`}
+      aria-label={`${label}: ${palette.map((c) => c.name || c.hex).join(", ")}`}
     >
       {palette.map((color, i) => (
         <li key={`${color.hex}-${i}`} className="flex w-11 flex-col items-center sm:w-14">
@@ -364,6 +365,7 @@ function AttireGroupPanel({
   group: {
     id: string
     title: string
+    image?: string
     dressCode?: string
     note?: string
     palette: readonly AttireColor[]
@@ -396,6 +398,18 @@ function AttireGroupPanel({
         ) : null}
       </div>
 
+      {group.image ? (
+        <div className="relative mt-3 aspect-[5/3] w-full sm:mt-4">
+          <Image
+            src={group.image}
+            alt={`${group.title} attire examples`}
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 85vw, 680px"
+          />
+        </div>
+      ) : null}
+
       {halves.length > 0 && (
         <div className={`mt-3 grid gap-2.5 sm:mt-4 sm:gap-4 ${halves.length > 1 ? "sm:grid-cols-2" : ""}`}>
           {halves.map((half, i) => (
@@ -423,6 +437,11 @@ function AttireGroupPanel({
                   {attire}
                 </p>
               ))}
+              {half.palette?.length ? (
+                <div className="mt-3 sm:mt-4">
+                  <PaletteDots palette={toPaletteColors(half.palette)} label={`${half.label} color palette`} />
+                </div>
+              ) : null}
             </div>
           ))}
         </div>
@@ -1432,10 +1451,10 @@ export function Details() {
           )}
 
 
-          {/* One card for everyone: shared image, then each group with its palette below */}
+          {/* One card for everyone, with each group's illustration and palette */}
           {attireGroups.length > 0 && (
             <div className="mx-auto mb-6 w-full max-w-3xl sm:mb-8 md:mb-10">
-              <AttireCard title="" image={attire.image} alt="Attire guide in pastel blue, green, yellow, pink and violet">
+              <AttireCard title="" alt="Attire guide in pastel blue, green, yellow, pink and violet">
                 <div className="space-y-3 sm:space-y-4">
                   {attireGroups.map((group) => (
                     <AttireGroupPanel key={group.id} group={group} />

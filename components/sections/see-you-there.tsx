@@ -205,7 +205,7 @@ export function SeeYouThere(_props: { background?: boolean } = {}) {
             <motion.div variants={rise} className="mt-7 flex items-center gap-1.5 md:hidden" aria-hidden>
               {photos.map((src, i) => (
                 <span
-                  key={src}
+                  key={`${src}-${i}`}
                   className="h-[3px] rounded-full transition-all duration-[1400ms] ease-in-out"
                   style={{
                     width: i === active ? "1.5rem" : "0.5rem",

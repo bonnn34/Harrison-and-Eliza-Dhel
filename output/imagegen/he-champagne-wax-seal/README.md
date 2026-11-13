@@ -1,0 +1,13 @@
+# H and E champagne-gold wax seal
+
+Asset: he-champagne-wax-seal-3000.png. Transparent-background PNG, exported at 3000 × 3000 pixels. Color: soft champagne gold to complement the lavender envelope. Created with the built-in imagegen tool using the H and E monogram and existing seal as references, then resized for PNG delivery. The website seal was not replaced.
+
+## Final prompt
+
+Use case: compositing. Create one luxury wedding wax seal asset using the TWO supplied references.
+Image 1 is the exact H and E monogram to preserve: a large refined serif H placed upper left, a refined serif E lower right, gracefully overlapping, with a fine upward swooping flourish and tiny leaves at upper right and a lower sweeping flourish with a tiny leaf sprig at lower left. Preserve its letter shapes, relative positions, graceful flourishes, small botanical details and clear readability. These are H and E ONLY.
+Image 2 is a reference for the wax seal silhouette, raised round double-ring border and wax material. Replace its entire existing letter design with the exact H and E monogram from image 1. Do not retain any letters from image 2.
+Create a sophisticated front-facing, circular hand-poured wax seal with an organic softly scalloped irregular perimeter, raised rounded wax edges, a recessed smooth central disk and two delicate concentric embossed rings. Center the complete H and E emblem inside the disk, occupying about 68 percent of the interior, with breathing room between all monogram details and the rings. Render the initials and the two tiny sprigs as crisp shallow raised relief pressed into the SAME wax material.
+Color: soft antique champagne gold, pale warm beige-gold with a subtle rosy undertone, medium tone approximately #C8AE78, restrained ivory-gold highlights and warm taupe-gold shadows. This must complement a pale lavender/lilac envelope, dusty blue typography and a romantic pastel garden wedding. Elegant satin wax with fine realistic surface texture; gentle dimensional highlights and soft shallow shadows are appropriate for this seal. Avoid bright yellow, orange brass, harsh white glare, glitter and chrome-like reflectivity.
+Composition: ONE complete seal, straight-on top view, centered and isolated with modest transparent margin around the entire perimeter. Keep organic wax edging entirely visible. No envelope, card, hand, props, mockup, text beyond the H and E initials, cast shadow outside the seal, watermark or checkerboard pixels.
+Output: high-resolution square PNG with fully transparent alpha background outside the wax seal. The central disk and whole wax object must remain opaque.

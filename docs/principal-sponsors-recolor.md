@@ -1,0 +1,13 @@
+# Principal sponsors recolor
+
+Tool: built-in image generation, image-edit mode, transparent background.
+
+Saved asset: `public/Details/principal-sponsors-pastel-v1.png`.
+
+Reference: the user's first attachment (five illustrated couples in muted pastel gowns and cream barongs).
+
+Edit target: the user's second attachment (four couples in coral gowns and black suits).
+
+## Final prompt
+
+Use case: precise-object-edit. Recolor ONLY the user's SECOND attached image: the wide cutout with EXACTLY FOUR adult Filipino sponsor couples (eight people), women all wearing bright coral/salmon formal gowns, men all wearing black suit jackets, white shirts, black ties, and black trousers. The user's FIRST attached image (five faceless illustrated couples, men in cream barongs, women in muted pastel gowns) is the COLOR REFERENCE ONLY. Any other image showing a large wedding party with children is unrelated and must be ignored completely. Work exclusively on the four-couple coral-gown cutout as the edit target. Change clothing COLORS ONLY, keeping the exact eight people, identities, faces, ages, expressions, hairstyles, jewelry, body proportions, linked-arm poses, positions, realistic polished illustration style, number of couples, full-length framing, and every garment design invariant. Do not create a fifth couple. Recolor the four women's dresses FROM LEFT TO RIGHT: 1) soft muted dusty blue, 2) delicate muted blush pink, 3) soft muted sage green, 4) pale lavender. Match the subdued fabric colors of the first image, not vivid saturated candy colors. Preserve all existing original floral appliques, beadwork, lace, pleats, neckline shapes, ruffles, sleeve cuts, skirts, slits, fabric folds, highlights and shading; recolor appliques to coordinate with each gown. Preserve the tiny floral hair accessories, recoloring those gently to match. Change only the black SUIT JACKETS to warm ivory/cream, taking that hue from the cream shirts in the first reference; retain the exact suit jacket cut, lapels, pockets, buttons, white dress shirts and black neckties. KEEP men's trousers and shoes dark charcoal/black. Do not replace suits with barongs, do not change clothing styles. Keep women's shoes and clutches light champagne/cream; use only tiny pale butter-yellow details where the existing gold/champagne embellishments naturally occur. Do not recolor skin, hair, eyes, or facial features. Preserve the same wide arrangement and spacing, all eight heads and feet fully visible. Background must remain genuinely transparent with an alpha channel, not black, white, cream, or checkerboard. No new objects, no text, no titles, no labels, no watermark. The result should look exactly like the second image except the requested garment recoloring.

@@ -73,7 +73,7 @@
   --primary: #5B7FA6;
   --primary-foreground: oklch(0.145 0 0);
   /* Secondary: pastel blue */
-  --secondary: #C7DDF0;
+  --secondary: #F3CED6;
   --secondary-foreground: oklch(0.145 0 0);
   /* Sage green */
   --sage: #A9B9A1;
@@ -98,7 +98,7 @@
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: #5B7FA6;
   --sidebar-primary-foreground: oklch(0.145 0 0);
-  --sidebar-accent: #C7DDF0;
+  --sidebar-accent: #DCCFF0;
   --sidebar-accent-foreground: oklch(0.145 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: #5B7FA6;
@@ -170,8 +170,8 @@
    ========================================== */
 
    /* The six motif colors — use these anywhere */
-   --color-motif-blue: #C7DDF0;
-   --color-motif-green: #D5E3D0;
+   --color-motif-blue: color-mix(in srgb, #5B7FA6 30%, #FFFBF0);
+   --color-motif-green: #A9B9A1;
    --color-motif-sage: #A9B9A1;
    --color-motif-butter: #F7E5A9;
    --color-motif-pink: #F3CED6;
@@ -181,7 +181,7 @@
    Background / Linen
    ------------------------------------------ */
 
-   --color-motif-cream: color-mix(in srgb, #F7E5A9 55%, #FFFBF0); /* soft butter yellow */
+   --color-motif-cream: color-mix(in srgb, #F7E5A9 32%, #FFFBF0); /* soft butter yellow */
    --color-motif-yellow: #F7E5A9; /* butter yellow */
    --color-motif-soft: #FFFBF0; /* cream paper */
    
@@ -191,15 +191,15 @@
    
    --color-motif-accent: #5B7FA6; /* dusty blue (readable accent) */
    --color-motif-deep: #2F4A66; /* navy */
-   --color-motif-medium: color-mix(in srgb, #C7DDF0 62%, #5B7FA6); /* mid pastel blue */
+   --color-motif-medium: color-mix(in srgb, #A9B9A1 62%, #5B7FA6); /* sage and dusty blue */
    
    /* ------------------------------------------
       Pastel Blue Accents
       ------------------------------------------ */
    
    --color-motif-teal: #2F4A66; /* navy */
-   --color-motif-teal-medium: color-mix(in srgb, #C7DDF0 62%, #5B7FA6); /* mid pastel blue */
-   --color-motif-teal-light: #C7DDF0; /* pastel blue */
+   --color-motif-teal-medium: color-mix(in srgb, #5B7FA6 62%, #FFFBF0); /* soft dusty blue */
+   --color-motif-teal-light: color-mix(in srgb, #5B7FA6 30%, #FFFBF0); /* soft dusty blue */
    
    /* ------------------------------------------
       Botanical / Spring Accent
@@ -211,14 +211,14 @@
       Neutral / Paper
       ------------------------------------------ */
    
-   --color-motif-silver: #D6B779; /* soft gold */
+   --color-motif-silver: #F7E5A9; /* butter yellow */
    
    /* ==========================================
       WELCOME SECTION
       ========================================== */
    
    /* Main background */
-   --color-welcome-bg: color-mix(in srgb, #F7E5A9 55%, #FFFBF0); /* soft butter yellow */
+   --color-welcome-bg: color-mix(in srgb, #F3CED6 28%, #FFFBF0); /* blush cream */
    
    /* Soft background */
    --color-welcome-bg-soft: #FFFBF0; /* cream paper */
@@ -253,7 +253,7 @@
    --color-welcome-botanical: #A9B9A1; /* sage green */
    
    /* Gold decorative details */
-   --color-welcome-gold: #D6B779; /* soft gold */
+   --color-welcome-gold: #F7E5A9; /* butter yellow */
    
    /* Floral accents */
    --color-welcome-blush: #F3CED6; /* blush pink */
@@ -264,7 +264,7 @@
    
    --color-coastal-deep: #2F4A66; /* navy */
    --color-coastal-teal: #5B7FA6; /* dusty blue */
-   --color-coastal-soft: #C7DDF0; /* pastel blue */
+   --color-coastal-soft: color-mix(in srgb, #5B7FA6 30%, #FFFBF0); /* soft dusty blue */
    --color-coastal-light: #DCCFF0; /* lavender */
    
    --color-romantic-coral: #5B7FA6; /* dusty blue */
@@ -272,7 +272,7 @@
    --color-romantic-peach: #F7E5A9; /* butter yellow */
    --color-romantic-blush: #F3CED6; /* blush pink */
    
-   --color-coastal-sand: #D6B779; /* soft gold */
+   --color-coastal-sand: #F7E5A9; /* butter yellow */
    --color-coastal-ivory: #FFFBF0; /* cream paper */
    
    /* ==========================================
@@ -293,24 +293,24 @@
       ========================================== */
    
    /* Flat base behind the circles — white with a whisper of butter yellow */
-   --color-bg-pattern-base: color-mix(in srgb, #F7E5A9 28%, white);
+   --color-bg-pattern-base: #FFFBF0;
    
    /* Main circles — pastel blue, lavender, mint */
-   --color-bg-circle-deep: color-mix(in srgb, #C7DDF0 70%, transparent);
+   --color-bg-circle-deep: color-mix(in srgb, #5B7FA6 28%, transparent);
    
    --color-bg-circle-mid: color-mix(in srgb, #DCCFF0 62%, transparent);
    
    --color-bg-circle-light: color-mix(in srgb, white 72%, transparent);
    
    /* Accent circles */
-   --color-bg-circle-accent-1: color-mix(in srgb, #D5E3D0 70%, transparent);
+   --color-bg-circle-accent-1: color-mix(in srgb, #A9B9A1 45%, transparent);
    
-   --color-bg-circle-accent-2: color-mix(in srgb, white 58%, transparent);
+   --color-bg-circle-accent-2: color-mix(in srgb, #F3CED6 45%, transparent);
    
    --color-bg-circle-accent-3: color-mix(in srgb, #F7E5A9 60%, transparent);
    
    /* Warm touches — blush pink and a little sage */
-   --color-bg-circle-rose: color-mix(in srgb, #F3CED6 60%, transparent);
+   --color-bg-circle-rose: color-mix(in srgb, #F3CED6 65%, transparent);
    
    --color-bg-circle-peach: color-mix(in srgb, #A9B9A1 22%, transparent);
    
@@ -334,7 +334,7 @@
    --color-countdown-text: var(--color-motif-soft);
    
    /* Unit labels */
-   --color-countdown-label: #C7DDF0;
+   --color-countdown-label: #DCCFF0;
    
    /* ==========================================
       ENVELOPE — DUSTY BLUE FAMILY (blue paper, deeper navy folds)
@@ -381,7 +381,7 @@
    --color-highlight-deep: #5B7FA6;
    
    /* Decorations — corner leaves, ornaments */
-   --color-deco: #D6B779; /* soft gold */
+   --color-deco: #A9B9A1; /* sage green */
    
    /* ==========================================
       INVITATION DESIGN SYSTEM
@@ -405,7 +405,7 @@
    /* Paper surfaces */
    --invite-paper: var(--color-motif-soft);
    
-   --invite-paper-tint: color-mix(in srgb, #C7DDF0 22%, var(--color-motif-soft));
+   --invite-paper-tint: color-mix(in srgb, #F3CED6 22%, var(--color-motif-soft));
    
    /* Hairlines and frames */
    --invite-line: color-mix(in srgb, #A9B9A1 55%, transparent);
@@ -429,10 +429,10 @@
    --invite-page-bg: var(--color-welcome-bg);
    
    /* Section accent */
-   --color-section-accent: color-mix(in srgb, #C7DDF0 62%, #5B7FA6);
+   --color-section-accent: color-mix(in srgb, #DCCFF0 62%, #5B7FA6);
    
    /* Light section */
-   --color-section-light: #C7DDF0;
+   --color-section-light: #DCCFF0;
    
    /* Card background */
    --color-card: #FFFBF0;

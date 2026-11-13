@@ -67,18 +67,18 @@ export type AttireColor = string | { name: string; hex: string }
 
 // ── The couple ──────────────────────────────────────────────────────────────
 const COUPLE = {
-  bride: "Elizabeth Jra. Tormis",
-  brideNickname: "Elizabeth",
-  groom: "Melchor Repetillo Jr.",
-  groomNickname: "Melchor",
+  bride: "Eliza Dhel B. Maguyon",
+  brideNickname: "Eliza",
+  groom: "Harrison A. Mendoza",
+  groomNickname: "Harrison",
 }
 
 // ── Date & times ────────────────────────────────────────────────────────────
-const WEDDING_DATE = "November 28, 2026" // e.g. "June 5, 2027"
+const WEDDING_DATE = "December 5, 2026" // e.g. "June 5, 2027"
 const WEDDING_DAY = "Saturday"
 const TIMES = {
-  entourageCall: "7:00 AM", // entourage assembly ⚠ check — not confirmed yet
-  guestArrival: "8:00 AM", // guests arrival / assembly (shown in Event Details + reminders) ⚠ check — not confirmed yet
+  entourageCall: "8:00 AM", // entourage assembly ⚠ check — not confirmed yet
+  guestArrival: "8:30 AM", // guests arrival / assembly (shown in Event Details + reminders) ⚠ check — not confirmed yet
   ceremony: "9:00 AM",
   reception: "11:00 AM", // start of program
 }
@@ -86,27 +86,27 @@ const TIMES = {
 // ── Venues ──────────────────────────────────────────────────────────────────
 
 const CEREMONY_VENUE = {
-  name: "Kingdom Hall of Jehovah's Witnesses",
-  address: "Brgy Estado Kinghom Hall Location",
+  name: "Cathedral of Saint Paul the First Hermit",
+  address: "Marcos Paulino Ave, San Pablo City, 4000 Laguna",
   // ⚠ check — Google Maps search link; swap for the exact pin when available
-  map: "https://maps.app.goo.gl/vSx2t9VRE83GawbRA",
+  map: "https://maps.app.goo.gl/zZmixBerkhjNA6ba7",
   // Place searched for the embedded map + church → reception route ⚠ check the pin lands on the chapel
-  mapQuery: "Kingdom Hall of Jehovah's Witnesses, Brgy Estado Kinghom Hall Location",
-  photos: ["/Details/ceremony.png"] as string[],
+  mapQuery: "Cathedral of Saint Paul the First Hermit, Marcos Paulino Ave, San Pablo City, 4000 Laguna",
+  photos: ["/Details/ceremony-new.jpg", "/Details/ceremony-new.webp"] as string[],
 }
 const RECEPTION_VENUE = {
-  name: "Nisol's Farm",
-  address: "Brgy. XI, Gawahon, Victorias City, Philippines",
+  name: "Bandian Farm and Garden Resort",
+  address: "Calauan, Laguna",
   // ⚠ check — Google Maps search link; swap for the exact pin when available
-  map: "https://maps.app.goo.gl/R7BkuGwjjRQ5KtTN6",
-  mapQuery: "Nisol's Farm, Brgy. XI, Gawahon, Victorias City, Philippines", // embedded map + route ⚠ check the pin
-  photos: ["/Details/venue.png"] as string[],
+  map: "https://maps.app.goo.gl/D9EFQaySEF9BVWG98",
+  mapQuery: "Calauan, Laguna", // embedded map + route ⚠ check the pin
+  photos: ["/Details/new-reception (3).jpg","/Details/new-reception (4).jpg", "/Details/new-reception (5).jpg"] as string[],
 }
 
 // Second reception — its own small card under the main reception card (no map, photo or QR).
 // show: false hides it.
 const SECOND_RECEPTION = {
-  show: true,
+  show: false,
   eyebrow: "The Celebration Continues",
   badge: "Reception Venue 2",
   name: "Repetillo Residence",
@@ -172,7 +172,7 @@ const VENUE_CARDS = {
 // Zoom card under the second reception card (Event Details) — for guests joining online.
 // show: false hides it. link "" hides the Join button.
 const ZOOM_DETAILS = {
-  show: true,
+  show: false,
   eyebrow: "Celebrate with Us Online",
   title: "Zoom Details",
   note: "Can't be with us in person? You are warmly welcome to join our celebration live on Zoom.",
@@ -218,7 +218,7 @@ const RSVP = {
 const HASHTAGS = ["#LifetimeAdMELCHORwithElizabeth"]
 
 // ── Attire guide (Event Details → Attire Guidelines) ────────────────────────
-// One card for everyone: ATTIRE.image on top, then one block per group (title, dress
+// One card for everyone: one block per group (image, title, dress
 // code, ladies / gentlemen, palette).
 // SHOW = which groups to display AND their order, top to bottom. Examples:
 //   ["guests"]                            guests only
@@ -234,13 +234,14 @@ const HASHTAGS = ["#LifetimeAdMELCHORwithElizabeth"]
 //     label:     e.g. "Ninang", "Bridesmaids", "Ladies"
 //     details:   the dress code text ("" hides this half of the card)
 //     highlight: phrase inside details shown bold + underlined ("" for none)
+//     palette:   optional colors specific to ladies or gentlemen
 // Our five pastels — shared by the entourage, the guests and the reminders palette
 const PASTELS: AttireColor[] = [
-  { name: "Pastel Blue", hex: "#C7DDF0" },
-  { name: "Pastel Green", hex: "#CFE3C8" },
-  { name: "Pastel Yellow", hex: "#F7E5A9" },
-  { name: "Pastel Pink", hex: "#F3CED6" },
-  { name: "Pastel Violet", hex: "#DCCFF0" },
+  { name: "Blush Pink", hex: "#F3CED6" },
+  { name: "Sage Green", hex: "#A9B9A1" },
+  { name: "Butter Yellow", hex: "#F7E5A9" },
+  { name: "Dusty Blue", hex: "#5B7FA6" },
+  { name: "Lavender", hex: "#DCCFF0" },
 ]
 // Guest dress code colors
 const DRESS_CODE_PALETTE: AttireColor[] = PASTELS
@@ -253,31 +254,36 @@ const DRESS_CODE_PALETTE: AttireColor[] = PASTELS
 //   optional highlighted phrase) and an optional list of roles with what they wear.
 //   A side with empty details and no roles is hidden.
 const ATTIRE = {
-  show: ["entourage", "ushers", "family", "guests"] as AttireGroupId[],
-  // Shared illustration at the top of the attire card ("" = no image; any size/shape works)
-  image: "/Details/Attire.png",
-
+  show: ["entourage","sponsors","guests"] as AttireGroupId[],
+  // Each group can show its own illustration (image: "" hides it).
   entourage: {
-    title: "Male & Female Entourage",
+    title: "Entourage",
+    image: "/Details/entourage-barong-v2.png",
     dressCode: "Pastel Palette",
-    palette: PASTELS,
-    note: "Soft pastels of blue, green, yellow, pink and violet, worn by the ones standing closest to us.",
+    palette: [] as AttireColor[],
+    note: "",
     ladies: {
       label: "Female Entourage",
-      details: "An elegant dress in a pastel shade of blue, green, yellow, pink or violet.",
-      highlight: "dress",
+      details: "An elegant floor-length gown in blush pink, sage green, butter yellow, dusty blue or lavender.",
+      highlight: "floor-length gown",
+      palette: PASTELS,
       roles: [] as { role: string; attire: string }[],
     },
     gentlemen: {
       label: "Male Entourage",
-      details: "A Barong in a pastel shade of blue, green, yellow, pink or violet.",
-      highlight: "Barong",
+      details: "A cream or ivory long-sleeve Barong Tagalog with light gray dress trousers and dark dress shoes.",
+      highlight: "Barong Tagalog",
+      palette: [
+        { name: "Cream Barong", hex: "#F4EBDD" },
+        { name: "Gray Trousers", hex: "#B7B0B2" },
+      ] as AttireColor[],
       roles: [] as { role: string; attire: string }[],
     },
   },
 
   ushers: {
     title: "Ushers & Usherettes",
+    image: "/Details/ushers.png",
     dressCode: "White, Black, Blue & Peach",
     palette: [
       { name: "White", hex: "#FAFAF7" },
@@ -302,6 +308,7 @@ const ATTIRE = {
 
   family: {
     title: "Family Members & Witnesses",
+    image: "/Details/family.png",
     dressCode: "Beige",
     palette: [
       { name: "Light Beige", hex: "#EFE4D2" },
@@ -323,44 +330,54 @@ const ATTIRE = {
     },
   },
 
-  // Not shown (left out of show) — kept so it can be turned back on
   sponsors: {
     title: "Principal Sponsors",
+    image: "/Details/principal-sponsors-barong-v2.png",
     dressCode: "Formal Attire",
-    palette: [
-      { name: "Ivory Cream", hex: "#F4EBDD" },
-      { name: "Cream", hex: "#EADBC6" },
-    ] as AttireColor[],
+    palette: [] as AttireColor[],
     note: "",
     ladies: {
       label: "Ninang",
-      details: "An elegant long gown or formal dress with sleeves, in ivory or cream.",
+      details: "An elegant long gown or formal dress in blush pink, sage green, butter yellow, dusty blue or lavender.",
       highlight: "long gown or formal dress",
+      palette: PASTELS,
       roles: [] as { role: string; attire: string }[],
     },
     gentlemen: {
       label: "Ninong",
-      details: "A long-sleeve Barong Tagalog worn with black slacks and dress shoes.",
-      highlight: "long-sleeve Barong Tagalog",
+      details: "A cream or ivory long-sleeve Barong Tagalog with black dress trousers and black dress shoes.",
+      highlight: "Barong Tagalog",
+      palette: [
+        { name: "Cream Barong", hex: "#F4EBDD" },
+        { name: "Black Trousers", hex: "#242424" },
+      ] as AttireColor[],
       roles: [] as { role: string; attire: string }[],
     },
   },
 
   guests: {
     title: "Wedding Guests",
+    image: "/Details/guests-pastel-v1.png",
     dressCode: "Florals & Pastels",
-    palette: PASTELS,
-    note: "Any shade from the palette below: mix and match, and come comfortable and lovely.",
+    palette: [] as AttireColor[],
+    note: "",
     ladies: {
       label: "Ladies",
-      details: "A floral dress in blue, pink, yellow, violet or green.",
-      highlight: "floral dress",
+      details: "An elegant floral or solid-color dress in blush pink, sage green, butter yellow, dusty blue or lavender.",
+      highlight: "floral or solid-color dress",
+      palette: PASTELS,
       roles: [] as { role: string; attire: string }[],
     },
     gentlemen: {
       label: "Gentlemen",
-      details: "A Barong or suit in blue, pink, yellow, violet or green.",
-      highlight: "Barong or suit",
+      details: "A pastel collared shirt, polo, blazer or suit with dress trousers and dress shoes. Pair pastel tops with beige, charcoal or navy trousers, or wear a matching pastel suit.",
+      highlight: "pastel collared shirt, polo, blazer or suit",
+      palette: [
+        ...PASTELS,
+        { name: "Beige", hex: "#E1D0B5" },
+        { name: "Charcoal", hex: "#36383C" },
+        { name: "Navy", hex: "#2F4A66" },
+      ] as AttireColor[],
       roles: [] as { role: string; attire: string }[],
     },
   },
@@ -385,33 +402,34 @@ const SHOW_PHOTOS = DISPLAY_MODE === "photos"
 
 // ── Shared images ───────────────────────────────────────────────────────────
 const BRAND = {
-  monogram: "/monogram/monogram.png",
+  monogram: "/monogram/image.png",
   coupleNameImage: "/Details/newcoupelNames.png", // couple-name lettering (loader, envelope)
-  seal: "/monogram/seal.png", // envelope wax seal
+  seal: "/monogram/image copy.png", // envelope wax seal
   backgroundMusic: "/background_music/Kyla - Beautiful Days (Official Lyric Video).mp3",
 }
 
 // Couple photos reused across the site (gallery, loader, reminders, snap & share, closing)
 // — every portrait in /public/mobile-background
 const COUPLE_PHOTOS = Array.from(
-  { length: 11 },
+  { length: 12 },
   (_, i) => `/mobile-background/couples (${i + 1}).webp`,
 )
 
 // Portraits for the envelope reveal + the main cover photo (soft natural light, no heavy filters)
 const COUPLE_PORTRAITS = {
-  groom: "/mobile-background/couples (52).webp", // left photo in the envelope
-  bride: "/mobile-background/couples (14).webp", // right photo in the envelope
-  cover: "/mobile-background/couples (9).webp", // main photo: pulled out of the envelope + home hero cover photo
+  groom: "/mobile-background/couples (16).webp", // left photo in the envelope
+  bride: "/mobile-background/couples (17).webp", // right photo in the envelope
+  cover: "/mobile-background/couples (18).webp", // main photo: pulled out of the envelope + home hero cover photo
 }
 
-// Sliding photo marquee behind the loader and envelope (photos display) — hand-picked
+// Sliding photo marquee behind the loader and envelope (photos display) — all 18
 // portraits from /public/mobile-background, in order; alternated across the two rows.
 // Desktop (768px+) uses the landscape shots in /public/desktop-background — update the count when files change.
-const LOADER_MARQUEE_PHOTOS = [110, 106, 101, 71, 68, 67, 61, 58, 29, 16, 15, 12, 8].map(
-  (n) => `/mobile-background/couples (${n}).webp`,
+const LOADER_MARQUEE_PHOTOS = Array.from(
+  { length: 18 },
+  (_, i) => `/mobile-background/couples (${i + 1}).webp`,
 )
-const MARQUEE_PHOTO_COUNT_DESKTOP = 51
+const MARQUEE_PHOTO_COUNT_DESKTOP = 56
 const MARQUEE_PHOTOS_DESKTOP = Array.from(
   { length: MARQUEE_PHOTO_COUNT_DESKTOP },
   (_, i) => `/desktop-background/couples (${i + 1}).webp`,
@@ -421,16 +439,16 @@ const MARQUEE_PHOTOS_DESKTOP = Array.from(
 // Change a path here to swap it on every section at once.
 // To change ONE section only, override it there, e.g. decos: { ...SECTION_DECOS, footerVine: "" }
 const DECOR = {
-  cornerTopLeft: "/deco/lovestorydeco/top-left.png",
-  cornerTopRight: "/deco/lovestorydeco/top-right.png",
-  cornerBottomLeft: "/deco/lovestorydeco/bottom-left.png",
-  cornerBottomRight: "/deco/lovestorydeco/bottom-right.png",
-  cornerOverlayTopLeft: "/deco/cornerOverlayTopLeft.png", // floral corner layered over the top vines (loader + envelope)
-  cornerOverlayTopRight: "/deco/cornerOverlayTopRight.png",
-  headerOrnament: "/deco/lovestorydeco/headerOrnament.png", // small sprig above titles
-  footerVine: "/deco/lovestorydeco/footerVine.png", // long vine at section ends
-  sideLeft: "/deco/lovestorydeco/Elegant-Eucalyptus-Left.png", // love story side sprigs
-  sideRight: "/deco/lovestorydeco/Elegant-Eucalyptus-Right.png",
+  cornerTopLeft: "/deco/spring-garden/corner-top-left.webp",
+  cornerTopRight: "/deco/spring-garden/corner-top-right.webp",
+  cornerBottomLeft: "/deco/spring-garden/corner-bottom-left.webp",
+  cornerBottomRight: "/deco/spring-garden/corner-bottom-right.webp",
+  cornerOverlayTopLeft: "/deco/spring-garden/corner-top-left.webp", // floral corner layered over the top vines (loader + envelope)
+  cornerOverlayTopRight: "/deco/spring-garden/corner-top-right.webp",
+  headerOrnament: "/deco/spring-garden/small-accent.webp", // small sprig above titles
+  footerVine: "/deco/spring-garden/section-divider.webp", // long vine at section ends
+  sideLeft: "/deco/spring-garden/small-accent.webp", // love story side sprigs
+  sideRight: "/deco/spring-garden/small-accent.webp",
 }
 
 // The four corners as one set
@@ -468,7 +486,7 @@ const COUPLE_LABEL = `${COUPLE.groomNickname} & ${COUPLE.brideNickname}`
    ============================================================================ */
 
 // Principal sponsors Google Apps Script — used by the main page and /inviteone
-const SPONSORS_API = "https://script.google.com/macros/s/AKfycbykGTCcyCsrFqC6xxEsgNhCXOGv6uGGfIwY7Y1GylgZeWT93LjlyGCXJSWSIrjb1iSR/exec"
+const SPONSORS_API = "https://script.google.com/macros/s/AKfycbxMYHibt_f1hPuVeDYdI3VbrdVSv6bjKUSk5zIe7WKepvSWt5bZwAeJGAvjupu1rA-IAg/exec"
 
 export const siteConfig = {
   siteUrl: SITE_URL,
@@ -479,18 +497,18 @@ export const siteConfig = {
     backgroundMusic: BRAND.backgroundMusic,
   },
   googleAPI:{
-    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLScPuKkKkU612VtKzSRjMwc-Xq14gVOHqLsM_qXJHM6krVqe1A/formResponse",   //done
-    message: "https://script.google.com/macros/s/AKfycbyr1PLd2r5lTpmtW9xK3h-BTT96euB1T0yt-4SouBGrPrtF9F5mcQ6RO35gsOFJlPsb/exec",  //done
-    guestList: "https://script.google.com/macros/s/AKfycbyRDg99lFPHoThX9AtdXs2torGgcuXPe4QLHWWEAPQVOICLH2nuxDDypRvSerS2SMxk/exec",  //done
-    guestListTwo:"https://script.google.com/macros/s/AKfycbyRDg99lFPHoThX9AtdXs2torGgcuXPe4QLHWWEAPQVOICLH2nuxDDypRvSerS2SMxk/exec",
-    guestRequest: "https://script.google.com/macros/s/AKfycbz6lNMGWQop6iB-qbPRByddWNn6f1IZfIMnp8RGC1cizNjAwg6QBH6UJsl-Ew4HH4Ag/exec",   //done
-    entourage: "https://script.google.com/macros/s/AKfycbwRviq-8TpxPocvpcb_TTbzIYjomjv00PbIdKYjjl2B7UzfqWZ_yAL7ULM-5pmBRnHd/exec",  //done
+    messageForm: "https://docs.google.com/forms/d/e/1FAIpQLScFHS3Z1-ZK9q4r7AgMUAgYAL1sFvrWvKxqzNEHrEpq95tGIQ/formResponse",   //done
+    message: "https://script.google.com/macros/s/AKfycbyPUmcxGlwjS9WJ9cwV_fb1p6L_UF58ZfCEltfz-Y3dLCFYeHZqRlCrU9Rvw7tEv9QyZw/exec",  //done
+    guestList: "https://script.google.com/macros/s/AKfycbzSs_1nx3qFHLHt6BiZty3oGakc1EDdY9AbvLNT5-W9sVuVhxq2MwgcLLneZhjWYryMYA/exec",  //done
+    guestListTwo:"https://script.google.com/macros/s/AKfycbzSs_1nx3qFHLHt6BiZty3oGakc1EDdY9AbvLNT5-W9sVuVhxq2MwgcLLneZhjWYryMYA/exec",//done
+    guestRequest: "https://script.google.com/macros/s/AKfycbwu35avynHSIi2gUKKWP8vhaoH_J-afpS9dbSNvrzQNc9kQmqHtxNFTpAkddFMjwdFzpQ/exec",//done   
+    entourage: "https://script.google.com/macros/s/AKfycbxREnbyflPB-V0HkQ-pvYJ3J8OPuJ87CqYnTEo58Gb0MUFUDLaY25sGJYbnZ-uBfg5NQA/exec",  //done
     sponsors: SPONSORS_API,  //done 
     // Principal sponsors shown on /inviteone and /invitetwo (entourage section)
     sponsorsInviteOne: SPONSORS_API, // same sheet as sponsors above
-    sponsorsInviteTwo: "https://script.google.com/macros/s/AKfycbykGTCcyCsrFqC6xxEsgNhCXOGv6uGGfIwY7Y1GylgZeWT93LjlyGCXJSWSIrjb1iSR/exec",
+    sponsorsInviteTwo: "https://script.google.com/macros/s/AKfycbxMYHibt_f1hPuVeDYdI3VbrdVSv6bjKUSk5zIe7WKepvSWt5bZwAeJGAvjupu1rA-IAg/exec",
 ////google share 
-    googleShare: "https://docs.google.com/spreadsheets/d/1v0py_TOHscBDGY1fF0fRVbFmZi7OZAodUEWyxHZgxQI/edit?usp=sharing",
+    googleShare: "https://docs.google.com/spreadsheets/d/1H8RVIe5iMcFqEpJbr-GLaQJErEd5NrIKhl9D-g7n-Uk/edit?usp=sharing",
     videoMessageForm:
       "https://docs.google.com/forms/d/e/1FAIpQLSfeGlEl4CMXWefdvCw6AOPHFS1ROku_rs-Gbofa2LkVJ0sLGQ/viewform", 
   },
@@ -529,9 +547,9 @@ export const siteConfig = {
     coupleNameImage: BRAND.coupleNameImage,
     // Shown in the three date cards (Month / Day / Year), left to right (display: "photos")
     photos: [
-      "/box/box-2.webp",
-      "/box/box-5.webp",
-      "/box/box-4.webp",
+      "/box/box (1).webp",
+      "/box/box (4).webp",
+      "/box/box (2).webp",
     ],
     dateLabels: ["Month", "Day", "Year"],
     // Plain mode invitation card — classic invitation wording around the couple's names ("" to hide a line)
@@ -561,7 +579,7 @@ export const siteConfig = {
       bride: COUPLE_PORTRAITS.bride,
     },
     // Bouquet tucked inside the open envelope, peeking out on both sides ("" to hide)
-    envelopeFlowers: "/deco/lovestorydeco/cornerBottomLeft.png",
+    envelopeFlowers: DECOR.headerOrnament,
     // Main page cover photo (home hero, plain display) — one natural, candid couple photo
     // "" = no cover photo (the envelope opens with the curtain reveal instead of the photo pull)
     coverPhoto: COUPLE_PORTRAITS.cover,
@@ -602,10 +620,13 @@ export const siteConfig = {
   },
   // Thank-you messages to family and friends (components/sections/love-story.tsx + StorySection)
   loveStory: {
-    title: "Our Love Story",
-    subtitle: "how our forever began",
+    title: "LOVE STORY",
+    subtitle: "",
     // Short opening line under the title ("" hides it)
-    intro: "",
+    intro: "Our story began as high school sweethearts, dreaming big dreams side by side. From classroom hallways to college lecture halls, we grew up together. Sharing every milestone, encouraging each other's ambitions, and becoming part of each other's lives. Through every season of life and the hard work of becoming professionals, we always stayed anchored in each other. This December, as we celebrate a decade of love, we are ready to step into our forever.",
+    openingQuote: "\"He has made everything beautiful in its time\"",
+    openingCitation: "Ecclesiastes 3:11.",
+    chaptersHeading: "Our Story: A Decade in the Making",
     // Small sprig above the title ("" hides it)
     headerOrnament: DECOR.headerOrnament,
     // Shown above a chapter's title when it has no date, e.g. "Chapter 03"
@@ -633,172 +654,50 @@ export const siteConfig = {
       topLeft: DECOR.sideLeft,
       bottomRight: DECOR.sideRight,
       timelineTop: DECOR.headerOrnament,
-      sectionBottom: DECOR.headerOrnament, // dusty-blue sprig under the closing quote ("" hides it)
+      sectionBottom: DECOR.footerVine, // floral divider under the closing quote ("" hides it)
     },
     // The story, one chapter at a time (fields: see StoryChapter above). Plain display shows
     // each chapter as a card with its couple photo beside it ("" image = card only).
     // Add, remove or reorder chapters freely — photo and card swap sides on their own.
     chapters: [
       {
-        date: "November 2024",
-        title: "Where It All Began",
-        image: "/mobile-background/couples (29).webp",
+        date: "I.",
+        title: "The Spark (2016)",
+        image: "/mobile-background/couples (1).webp",
         paragraphs: [
-          "It was a moment to remember in November 2024 when we first met in Mahayag renovation. My first assignment as a part of the construction group 2.",
+          "Way back in 2016, we met when we were both just (16) sixteen. What started as innocent young love carried us through the unforgettable years of senior high school, dreaming big side-by-side.",
         ],
       },
       {
-        date: "Mahayag Renovation",
-        title: "A Sister, A Friend",
-        image: "/mobile-background/couples (19).webp",
+        date: "II.",
+        title: "The Unshakable Bond",
+        image: "/mobile-background/couples (2).webp",
         paragraphs: [
-          "Bembem was one of the first batch of LDCVs who volunteered in Mahayag. When I saw her for the first time I told myself that this sister will be a good friend of mine because she is a jolly and  easy-going person. We became good friends as we work together in the site for the whole Mahayag renovation project.",
+          "Even back then, our faith in each other was absolute. No distance, doubt, or difficulty could ever stop us from believing in the future we were building together.",
         ],
       },
       {
-        date: "A Quiet Prayer",
-        title: "Seeing Her Heart",
-        image: "/mobile-background/couples (53).webp",
+        date: "III.",
+        title: "The College Years",
+        image: "/mobile-background/couples (3).webp",
         paragraphs: [
-          "Nakita ko gid nga handa siya mag sakripisyo para sa pag-alagad kay Jehova, matutom, kag maayo siya nga ehemplo sa mga batan-on. It was at that time when I prayed to Jehovah specifically about Bembem. My feelings grew as I observed her and I wanted to see if she is the right one for me.",
+          "From classroom hallways to college lecture halls, we took on the next chapter hand-in-hand. We became each other's entire world-the absolute best of friends, a constant anchor for one another through life's highest peaks and deepest valleys.",
         ],
       },
       {
-        date: "Leon Postigo",
-        title: "Miles Apart, Still Close",
-        image: "/mobile-background/couples (107).webp",
+        date: "IV.",
+        title: "The Professional Milestone",
+        image: "/mobile-background/couples (4).webp",
         paragraphs: [
-          "I keep contacting her although I transferred to Leon Postigo. I wanted to get to know her more and I always pray to Jehovah for his guidance. I always call her in the morning after waking up, during work break, lunch time and in the evening.",
+          "With shared ambitions, we cheered each other on through late nights and hard work. Together, we transformed our youthful dreams into reality, proudly stepping into our lives as professionals.",
         ],
       },
       {
-        date: "10:00 PM",
-        title: "The Late-Night Calls",
-        image: "/mobile-background/couples (112).webp",
+        date: "V.",
+        title: "The Right Time",
+        image: "/mobile-background/couples (5).webp",
         paragraphs: [
-          "Dahil may trabaho siya from 5:00 pm to 10:00 pm hindi ko siya makakausap ng early evening kaya nag set ako ng alarm na 10:00 pm para magising ako at makausap siya ulit. Naging napakakomportable na namin sa isa't-isa kaya nakakapag share ako sa kanya tungkol sa maraming bagay sa buhay ko.",
-        ],
-      },
-      {
-        date: "Getting to Know Her",
-        title: "Learning Who She Is",
-        image: "/mobile-background/couples (101).webp",
-        paragraphs: [
-          "May mga time na tinatanong ko rin sa iba kung ano ang pagkakakilala nila kay Bembem dahil hindi naman ako taga roon kaya hindi ko pa siya kilala ng higit.",
-        ],
-      },
-      {
-        date: "Dinas",
-        title: "Welcomed Into the Family",
-        image: "/mobile-background/couples (110).webp",
-        paragraphs: [
-          "Kahit mahirap ang signal ng malipat ako sa Dinas napanatili pa rin namin ang regular na communication. Minsan pa ini-invite nila ako virtually sa family worship nila  kaya napakasaya ko. Na feel ko na tanggap nila ako.",
-        ],
-      },
-      {
-        date: "July 03, 2025",
-        title: "Finding the Courage",
-        image: "/mobile-background/couples (8).webp",
-        paragraphs: [
-          "Sa tulong ni Jehova at ng mga kapatid mas naging disidido na ako na magpaalam sa kanya na manligaw. From many attempts it was on July 03, 2025 when I finally decided to confess to Bembem. I received a sudden assignment for a 10 minute talk in the week of June 30-July 6 about courtship. It was that part which pushed me to confess and pursue Bembem. It made me so happy to be able to openly show her how I admire her deeply.",
-        ],
-      },
-      {
-        date: "September 7, 2025",
-        title: "The Long-Awaited Yes",
-        image: "/mobile-background/couples (12).webp",
-        paragraphs: [
-          "Months passed sa ligawan stage. Biyahe na malayo pero sulit. Finally, I received the \"Yes\" with flowers delivered right thru my door on September 7, 2025. Ang araw na pinakahihintay ko we are officially a couple. We can now volunteer as a couple.",
-        ],
-      },
-      {
-        date: "Until Today",
-        title: "The Woman I Will Marry",
-        image: "/mobile-background/couples (71).webp",
-        paragraphs: [
-          "The long distance relationship wasn't easy but with Jehovah's help we made it until today. Gipakilala ko siya sa akon pamilya nga first, ang babaye nga nagustohan ko. Next, ang babaye nga gipangaluyagan ko. Then, ang babaye nga akon mega. Finally, ang babaye nga akon pangasaw-on.",
-        ],
-      },
-      // ── Her side of the story (continuation) ──
-      {
-        date: "November 2024",
-        title: "A Memorable Time",
-        image: "/mobile-background/couples (15).webp",
-        paragraphs: [
-          "As I reminisce, November 2024 was a memorable time for me it was the time I met the one I'm spending my life forever. Melchor was our trade overseer in the Mahayag renovation site.",
-        ],
-      },
-      {
-        date: "Mahayag Renovation",
-        title: "Someone Reliable",
-        image: "/mobile-background/couples (9).webp",
-        paragraphs: [
-          "Nakita nako ang iyang mga maayong hiyas sama sa maayong pagpanguna ug ang voluntary spirit. He is someone reliable so working in the site wasn't difficult.",
-        ],
-      },
-      {
-        date: "Volunteering Together",
-        title: "Like a Younger Brother",
-        image: "/mobile-background/couples (18).webp",
-        paragraphs: [
-          "We became good friends as we spend time together volunteering. He was like a younger brother to me as I see my younger sister in him, a person with chubby cheeks, fun to be with and someone who is always ready to volunteer whenever possible.",
-        ],
-      },
-      {
-        date: "Leon Postigo",
-        title: "Updates I Didn't Ask For",
-        image: "/mobile-background/couples (49).webp",
-        paragraphs: [
-          "When they transferred to Leon Postigo things went different. He called every time and gave updates about things I didn't ask. People around me are talking about what he's trying to do so I prayed to Jehovah and ask for his guidance then went to Leon Postigo to volunteer and observe.",
-        ],
-      },
-      {
-        date: "A Prayer for Time",
-        title: "More Attention, Extra Care",
-        image: "/mobile-background/couples (65).webp",
-        paragraphs: [
-          "I noticed his treatment towards him feels different from how it was before in Mahayag. He showed more attention and extra care for me. I prayed to Jehovah again and told him that I am not ready to be in a relationship so please give us more time to get to know each other better as friends.",
-        ],
-      },
-      {
-        date: "Night Owl & Early Bird",
-        title: "Feelings Grew",
-        image: "/mobile-background/couples (80).webp",
-        paragraphs: [
-          "I saw how he sacrificed his sleep just to talk to me because I'm a night owl and he is an early bird. That made me feel special. Time passed and feelings grew.",
-        ],
-      },
-      {
-        date: "Prayers Answered",
-        title: "All That I Prayed For",
-        image: "/mobile-background/couples (98).webp",
-        paragraphs: [
-          "I recalled all of my prayers before. I prayed to Jehovah that if I am for marriage I will meet someone when I'm 30 who has the qualities like a good head of the family, reliable, someone with a volunteering spirit and a good cook. 😂",
-          "It was then when I realized he has all of those.",
-        ],
-      },
-      {
-        date: "July 3, 2025",
-        title: "Just at the Right Time",
-        image: "/mobile-background/couples (102).webp",
-        paragraphs: [
-          "To confirm if he is really the one I prayed to Jehovah specifically that if Melchor confess his feelings in the first week of July 2025 then I will accept him but if not then I will stop our communication for good from July 08, 2025. He confessed in July 3, 2025 just at the right time. Jehovah has given me all the answers to my prayer. Bisan layo andam siya mo biyahe para mananghid sa akong spiritual parents sa Labangan ug mananghid sa akong papa virtually kay layo man akong papa.",
-        ],
-      },
-      {
-        date: "September 07, 2025",
-        title: "Flowers and a \"Yes\"",
-        image: "/mobile-background/couples (47).webp",
-        paragraphs: [
-          "Months of courtship passed. I wanted him to feel special because he is to me so I sent a bouquet of flowers delivered with love and a \"Yes\" in September 07, 2025. The most special time in 2025 for this 30 year old woman. Volunteering together as a couple made me very happy and grateful to Jehovah for gifting me a partner I didn't expect I needed.",
-        ],
-      },
-      {
-        date: "Forever Begins",
-        title: "My Husband to Be",
-        image: "/mobile-background/couples (53).webp",
-        paragraphs: [
-          "Long distance relationship wasn't easy but as we focused on how  Jehovah has helped us that strengthened us to continue serving him wherever we are. Melchor was first, my friend. Next,my younger brother. Then, my boyfriend. Finally, my husband to be.",
+          "We always promised to build our foundation first, choosing to wait until we were truly ready to build a home. Now, with hearts certain and a love proven by a decade of time, we are finally ready to settle down and step into our forever.",
         ],
       },
     ] as StoryChapter[],
@@ -816,7 +715,7 @@ export const siteConfig = {
     decos: {
       ...CORNER_DECOS,
       headerOrnament: DECOR.headerOrnament,
-      footerVine: DECOR.headerOrnament,
+      footerVine: DECOR.footerVine,
     },
     // Thin double border around the section and the full gallery page (false hides it)
     showFrame: true,
@@ -830,7 +729,7 @@ export const siteConfig = {
     page: {
       // Photo behind the gallery page header — landscape for 768px+, portrait for phones ("" hides it)
       heroDesktop: "/desktop-background/couples (49).webp",
-      heroMobile: "/mobile-background/couples (110).webp",
+      heroMobile: "/mobile-background/couples (6).webp",
       countLabel: "{count} photos",
       backText: "Back to invitation",
       backTextShort: "Back", // narrow phones
@@ -840,17 +739,15 @@ export const siteConfig = {
     // Photos shown in the gallery, in order (files live in /public)
     // text → caption used as the photo's description
     images: [
-      "/mobile-background/couples (110).webp",
-      "/mobile-background/couples (106).webp",
-      "/mobile-background/couples (101).webp",
-      "/mobile-background/couples (71).webp",
-      "/mobile-background/couples (68).webp",
-      "/mobile-background/couples (67).webp",
-      "/mobile-background/couples (61).webp",
-      "/mobile-background/couples (58).webp",
-      "/mobile-background/couples (15).webp",
-      "/mobile-background/couples (12).webp",
+      "/mobile-background/couples (6).webp",
+      "/mobile-background/couples (7).webp",
       "/mobile-background/couples (8).webp",
+      "/mobile-background/couples (9).webp",
+      "/mobile-background/couples (10).webp",
+      "/mobile-background/couples (11).webp",
+      "/mobile-background/couples (12).webp",
+      "/mobile-background/couples (13).webp",
+      "/mobile-background/couples (15).webp",
     ].map((image, i) => ({ image, text: `${COUPLE.groomNickname} and ${COUPLE.brideNickname}, photo ${i + 1}` })),
   },
 
@@ -890,8 +787,7 @@ export const siteConfig = {
     // Cards, colors, images and which groups show → QUICK SETUP → ATTIRE
     attire: {
       title: "Attire Guidelines",
-      description: "Our day blooms in soft pastels of blue, green, yellow, pink and violet, and we would love for you to wear them with us. Please find your role below, and kindly keep all attire modest and elegant.",
-      image: ATTIRE.image,
+      description: "Celebrate with us in blush pink, sage green, butter yellow, dusty blue and lavender. Please follow the outfit guidance and color palette for your role below, and keep your attire modest and elegant.",
       // Order and visibility come from ATTIRE.show (skips blanks, typos and repeats)
       groups: ATTIRE.show
         .filter((id, i, list) => ["entourage", "ushers", "family", "sponsors", "guests"].includes(id) && list.indexOf(id) === i)
@@ -904,11 +800,11 @@ export const siteConfig = {
       description: "A few loving notes so that everyone can relax and fully enjoy our special day.",
       // Animated photo stack above the title ([] = show the header ornament instead)
       images: [
-        "/box/box (1).JPG",
-        "/box/box (2).JPG",
-        "/box/box (5).JPG",
-        "/box/box (3).JPG",
-        "/box/box (4).JPG",
+        "/box/box (1).webp",
+        "/box/box (2).webp",
+        "/box/box (5).webp",
+        "/box/box (3).webp",
+        "/box/box (4).webp",
       ] as string[],
       // showPalette: shows the dress code palette after the first paragraph
       items: [
@@ -937,6 +833,22 @@ export const siteConfig = {
           ],
         },
         {
+          title: "NO SURPRISE ANNOUNCEMENTS",
+          variant: "soft" as "accent" | "soft",
+          showPalette: false,
+          paragraphs: [
+            "To keep the focus on the celebration, we kindly ask that there be no surpris announcements or proposals during our wedding.",
+          ],
+        },
+        {
+          title: "By Invitation Only",
+          variant: "soft" as "accent" | "soft",
+          showPalette: false,
+          paragraphs: [
+            "We'd like to keep our wedding solemn and intimate with most important people in our lives. Our guests are limited and handpicked on purpose. We kindly request to not bring uninvited guests (plus-ones) or tag-along companies may they be an adult or kids. Thank you for understanding and respecting our wishes as we celebrate this special day with our loved ones.",
+          ],
+        },        
+        {
           title: "Parking",
           variant: "soft" as "accent" | "soft",
           showPalette: false,
@@ -944,6 +856,7 @@ export const siteConfig = {
             "Parking for cars and motorcycles is available inside the venue.",
           ],
         },
+
         {
           title: "Celebrate with Us",
           variant: "accent" as "accent" | "soft",
@@ -1095,7 +1008,7 @@ export const siteConfig = {
     decos: {
       ...CORNER_DECOS,
       headerOrnament: DECOR.headerOrnament,
-      footerVine: DECOR.headerOrnament,
+      footerVine: DECOR.footerVine,
     },
     // Thin double border around the section (false hides it)
     showFrame: true,
@@ -1134,7 +1047,7 @@ export const siteConfig = {
       title: "RSVP",
       script: "Find your Name",
       placeholder: "Begin with your first name",
-      loading: "Preparing the guest list. We'll keep trying until names appear.",
+      loading: "Checking the guest list...",
       refine: "Keep typing to refine results",
       notFoundTitle: "Not finding your name?",
       notFoundText: "We'd love to have you with us. Send a request to join the celebration.",
@@ -1277,7 +1190,7 @@ export const siteConfig = {
     decos: {
       ...CORNER_DECOS,
       headerOrnament: DECOR.headerOrnament,
-      footerVine: DECOR.headerOrnament,
+      footerVine: DECOR.footerVine,
     },
     // Thin double border around the section (false hides it)
     showFrame: true,
@@ -1301,7 +1214,7 @@ export const siteConfig = {
     decos: {
       ...CORNER_DECOS,
       headerOrnament: DECOR.headerOrnament,
-      footerVine: DECOR.headerOrnament,
+      footerVine: DECOR.footerVine,
     },
     // Thin double border around the section (false hides it)
     showFrame: true,
@@ -1421,15 +1334,19 @@ export const siteConfig = {
       "Having you beside us as we say our vows, and keeping us in your prayers as we begin this new chapter, is truly all we could ask for.",
       "Should you wish to bless us further, a monetary gift toward our new home and life together would be warmly appreciated, though never expected. For your convenience, you may send it through any of the accounts below.",
     ],
-    // Accounts shown as cards with a QR code (the QR holds the account number, so a
-    // scan shows it ready to copy) and a copy button. name "" hides the name line.
+    // Use the original payment QR image exported from your bank or e-wallet app.
+    // Upload it to public/QR and set qrImage to "/QR/your-file.png" for each account.
+    // qrImage "" hides the QR image; name "" hides the name line. Copy Number remains available.
     accountsTitle: "Ways to Send Your Gift",
-    accountsHint: "Scan the QR code or tap Copy, then paste the number in your app.",
+    accountsHint: "Scan the QR code with your banking or e-wallet app, or tap Copy Number.",
     accounts: [
-      { provider: "GCash", name: "Melchor Repetillo Jr.", number: "09309324933" },
-      { provider: "GCash", name: "Elizabeth Jra. Tormis", number: "09158465873" },
-      { provider: "GoTyme", name: "", number: "013740362982" }, // ⚠ add the account name
-    ] as { provider: string; name: string; number: string }[],
+      {
+        provider: "MariBank",
+        name: "ELIZA DHEL MAGUYON",
+        number: "10229660968",
+        qrImage: "/QR/viber_image_2026-11-14_03-10-07-806.png",
+      },
+    ] as { provider: string; name: string; number: string; qrImage?: string }[],
     thankYou: "Thank you for being part of our story.", // "" hides the line
     signOff: "With joyful hearts,",
     signature: "{groom} & {bride}", // "" falls back to "{groom} & {bride}" nicknames
@@ -1964,7 +1881,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     playlistName: `${COUPLE_LABEL} Wedding`,
     cardNote: "Press play and listen along — every song holds a little piece of our story.",
     // Album-cover photo on the record sleeve ("" shows a pastel sleeve with the monogram)
-    cover: "/mobile-background/couples (12).webp",
+    cover: "/monogram/spotify.jpg",
     statusPlaying: "Now playing",
     statusIdle: "Press play to listen",
     buttonText: "Open in Spotify",
@@ -1974,8 +1891,8 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     showFrame: true,
     embedUrl:
     //https://open.spotify.com/embed/playlist/5sT43YjdM8pJ3xtEkrxyEY?utm_source=generator&si=e5e64aa63fd04356
-      "https://open.spotify.com/embed/playlist/4ge5TsfWzqE1AmSmm3mhLJ?utm_source=generator&si=954860d928174cf1",
-    spotifyUrl: "https://open.spotify.com/playlist/4ge5TsfWzqE1AmSmm3mhLJ",
+      "https://open.spotify.com/embed/playlist/0KHxg9LI5egdjhLD80T2TF?utm_source=generator&si=cf6dc2bf811946f1",
+    spotifyUrl: "https://open.spotify.com/playlist/0KHxg9LI5egdjhLD80T2TF?si=3Mzt5Y80TxGsCRc4xAw36w",
   },
   // Closing "See you there!" section (components/sections/see-you-there.tsx).
   //   photos mode (loadingScreen.display "photos") → full-screen couple photo
@@ -1989,17 +1906,15 @@ Now, as they prepare to say yes before God and the people they love most, Cather
     photo: COUPLE_PHOTOS[4],
     photoAlt: "{couple}",
     photos: [
-      "/mobile-background/couples (110).webp",
-      "/mobile-background/couples (106).webp",
-      "/mobile-background/couples (101).webp",
-      "/mobile-background/couples (71).webp",
-      "/mobile-background/couples (68).webp",
-      "/mobile-background/couples (67).webp",
-      "/mobile-background/couples (61).webp",
-      "/mobile-background/couples (58).webp",
-      "/mobile-background/couples (15).webp",
-      "/mobile-background/couples (12).webp",
+      "/mobile-background/couples (6).webp",
+      "/mobile-background/couples (7).webp",
       "/mobile-background/couples (8).webp",
+      "/mobile-background/couples (9).webp",
+      "/mobile-background/couples (10).webp",
+      "/mobile-background/couples (11).webp",
+      "/mobile-background/couples (12).webp",
+      "/mobile-background/couples (13).webp",
+      "/mobile-background/couples (15).webp",
     ] as string[],
     // Text over the photos ("" hides a line)
     eyebrow: "Until we meet",
@@ -2013,7 +1928,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
       // Fanned photo trio above the title — left, center (front), right; [] hides it
       photos: [COUPLE_PHOTOS[1], COUPLE_PHOTOS[4], COUPLE_PHOTOS[9]],
       // Corner florals — top two here, bottom two on the footer below; "" hides any of them
-      decos: { ...CORNER_DECOS, footerVine: DECOR.headerOrnament },
+      decos: { ...CORNER_DECOS, footerVine: DECOR.footerVine },
       // Thin double border around See You There + footer (false hides it)
       showFrame: true,
     },
@@ -2101,7 +2016,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
       "Help us remember the little moments of {couple}'s day — every smile, embrace, and candid laugh. Your photos and clips complete our love story.",
     // "Our Favorite Moments" photo card — always hidden when loadingScreen.display is "plain"
     moments: {
-      show: true,
+      show: false,
       title: "Our Favorite Moments",
       caption: "Share your snapshots to be featured in our keepsake gallery.",
       // 3 photos: two squares on top, one wide photo below

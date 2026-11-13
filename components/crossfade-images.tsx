@@ -29,7 +29,7 @@ export function CrossfadeImages({
         const isActive = i === active
         return (
           <div
-            key={src}
+            key={`${src}-${i}`}
             className="absolute inset-0 ease-in-out"
             style={{
               opacity: isActive ? 1 : 0,

@@ -1,7 +1,7 @@
 import { siteConfig } from "@/content/site";
 
 /** Mobile invitation photo marquee — `public/mobile-background` */
-export const MOBILE_BACKGROUND_PHOTO_COUNT = 11;
+export const MOBILE_BACKGROUND_PHOTO_COUNT = 18;
 
 export const MOBILE_BACKGROUND_PHOTOS = Array.from(
   { length: MOBILE_BACKGROUND_PHOTO_COUNT },
