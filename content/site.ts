@@ -215,7 +215,7 @@ const RSVP = {
   coordinator: "{groom} / {bride}", // {groom} / {bride} → couple nicknames
   phone: "to be announced",
 }
-const HASHTAGS = ["#LifetimeAdMELCHORwithElizabeth"]
+const HASHTAGS = ["#originELImadeforHARRIS"]
 
 // ── Attire guide (Event Details → Attire Guidelines) ────────────────────────
 // One card for everyone: one block per group (image, title, dress
@@ -258,7 +258,7 @@ const ATTIRE = {
   // Each group can show its own illustration (image: "" hides it).
   entourage: {
     title: "Entourage",
-    image: "/Details/entourage-barong-v2.png",
+    image: "/Details/image copy 2.png",
     dressCode: "Pastel Palette",
     palette: [] as AttireColor[],
     note: "",
@@ -2006,7 +2006,7 @@ Now, as they prepare to say yes before God and the people they love most, Cather
   // Snap & Share (components/sections/snap-share.tsx). {couple} → "Groom & Bride" nicknames.
   snapShare: {
     googleDriveLink:
-      "https://drive.google.com/drive/folders/1bVCFwnkukeHo69HilMcQnS-g9NJMUnKI?usp=sharing",
+      "https://drive.google.com/drive/folders/1-Maq9HWC4p0_j2AqsKP0_a5COrvEOQvg?fbclid=IwY2xjawVlEN9leHRuA2FlbQIxMABwZG9mBGJyaWQRMTR1TXBLYkNhc2FmWngwS21zcnRjBmFwcF9pZA81MTQ3NzE1NjkyMjgwNjEAAR_cNZ2mdmfccjN1uIAyAxS9xpgiteYfF6LMnqTyf7ItVpshdvfl08bujEZYtw_aem_8wMwgICKn3N-mOiPeUY59A",
     albumQR: "/QR/AlbumQR.png",
     hashtag: HASHTAGS,
     instructions: "Please scan this QR Code and upload the photos and videos you have taken during our wedding reception. We are delighted to see your snaps too!",
