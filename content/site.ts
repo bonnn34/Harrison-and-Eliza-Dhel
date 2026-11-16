@@ -211,7 +211,7 @@ const INVITE_TWO = {
 
 // ── RSVP & contact ──────────────────────────────────────────────────────────
 const RSVP = {
-  deadline: " November 20, 2026",
+  deadline: " November 25, 2026",
   coordinator: "{groom} / {bride}", // {groom} / {bride} → couple nicknames
   phone: "to be announced",
 }
@@ -258,7 +258,7 @@ const ATTIRE = {
   // Each group can show its own illustration (image: "" hides it).
   entourage: {
     title: "Entourage",
-    image: "/Details/image copy 2.png",
+    image: "/Details/image copy 3.png",
     dressCode: "Pastel Palette",
     palette: [] as AttireColor[],
     note: "",
